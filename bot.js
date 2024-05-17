@@ -1,4 +1,5 @@
-const { Client, GatewayIntentBits, Collection, MessageEmbed } = require('discord.js');
+const { Client, GatewayIntentBits, Collection } = require('discord.js');
+const { MessageEmbed } = require('@discordjs/builders'); // Import MessageEmbed
 const fs = require('fs');
 const path = require('path');
 const config = require('./config.json');
@@ -6,6 +7,7 @@ const puppeteer = require('puppeteer');
 const openai = require('openai');
 const { PythonShell } = require('python-shell');
 const { handleMessage } = require('./commands/level/levlingsystem');
+
 
 const client = new Client({
     intents: [
@@ -151,6 +153,7 @@ client.commands.set('help', {
         message.channel.send({ embeds: [helpEmbed] });
     },
 });
+
 
 const { REST, Routes } = require('discord.js');
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
