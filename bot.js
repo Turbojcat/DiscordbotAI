@@ -4,6 +4,8 @@ const path = require('path');
 const config = require('./config.json');
 const puppeteer = require('puppeteer');
 const openai = require('openai');
+const { PythonShell } = require('python-shell');
+
 
 const client = new Client({
     intents: [
@@ -55,6 +57,41 @@ const loadCommands = async dir => {
 };
 
 loadCommands(path.join(__dirname, 'commands'));
+
+client.commands.set('python', {
+    data: {
+        name: 'python',
+        description: 'Execute a Python script',
+    },
+    async execute(message, args) {
+        const scriptPath = path.join(__dirname, 'path', 'to', 'hello.py'); // Replace with the actual path to your Python script
+        const scriptArgs = args.slice(1); // Arguments to pass to the Python script
+
+        try {
+            const options = {
+                mode: 'text',
+                pythonPath: 'C:\\Program Files\\Python312\\python.exe', // Replace with the path to your Python installation
+                pythonOptions: ['-u'],
+                scriptPath: scriptPath,
+                args: scriptArgs,
+            };
+
+            PythonShell.run(scriptPath, options, (err, results) => {
+                if (err) {
+                    console.error('Error executing Python script:', err);
+                    message.reply('An error occurred while executing the Python script.');
+                } else {
+                    const output = results.join('\n');
+                    message.reply(`\`\`\`\n${output}\n\`\`\``);
+                }
+            });
+        } catch (error) {
+            console.error('Error executing Python script:', error);
+            message.reply('An error occurred while executing the Python script.');
+        }
+    },
+});
+
 
 // Event handler
 client.once('ready', () => {
