@@ -1,15 +1,11 @@
-// commands/search.js
-const { OpenAIApi } = require('openai');
 const puppeteer = require('puppeteer');
-
-const openai = new OpenAIApi(configuration); // Assuming you have the configuration set up correctly
 
 let browser;
 (async () => {
     browser = await puppeteer.launch();
 })();
 
-const searchCommand = async (query, message) => {
+const searchCommand = async (query, message, openaiApi) => {
     const page = await browser.newPage();
 
     try {
@@ -20,7 +16,7 @@ const searchCommand = async (query, message) => {
         });
 
         const prompt = `Search query: ${query}\n\nSearch results:\n${searchResults.join('\n\n')}\n\nProvide a summary of the search results:`;
-        const response = await openai.createCompletion({
+        const response = await openaiApi.createCompletion({
             model: 'text-davinci-003',
             prompt,
             max_tokens: 1024,
@@ -45,6 +41,7 @@ module.exports = {
     },
     execute(message, args) {
         const query = args.join(' ');
-        searchCommand(query, message);
+        searchCommand(query, message, this.openaiApi);
     },
 };
+

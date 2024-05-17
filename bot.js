@@ -42,7 +42,7 @@ const loadCommands = async dir => {
             try {
                 const command = require(filePath);
                 if ('data' in command && 'execute' in command) {
-                    client.commands.set(command.data.name, command);
+                    client.commands.set(command.data.name, { ...command, openaiApi });
                     console.log(`Loaded command: ${command.data.name}`);
                 } else {
                     console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
@@ -59,8 +59,12 @@ loadCommands(path.join(__dirname, 'commands'));
 // Event handler
 client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-    client.user.setActivity('Hello', { type: 'LISTENING' });
+    client.user.setPresence({
+        activities: [{ name: 'Hello', type: 'LISTENING' }],
+        status: 'online'
+    });
 });
+
 
 client.on('messageCreate', async message => {
     if (!message.guild) return;
@@ -72,45 +76,15 @@ client.on('messageCreate', async message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
 
-    if (commandName === 'search') {
-        const query = args.join(' ');
-        const page = await browser.newPage();
+    const command = client.commands.get(commandName);
+    if (!command) return;
 
-        try {
-            await page.goto(`https://www.google.com/search?q=${encodeURIComponent(query)}`);
-            const searchResults = await page.evaluate(() => {
-                const results = Array.from(document.querySelectorAll('div.g'));
-                return results.map((result) => result.textContent);
-            });
-
-            const prompt = `Search query: ${query}\n\nSearch results:\n${searchResults.join('\n\n')}\n\nProvide a summary of the search results:`;
-            const response = await openai.createCompletion({
-                model: 'text-davinci-003',
-                prompt,
-                max_tokens: 1024,
-                n: 1,
-                stop: null,
-                temperature: 0.7,
-            });
-
-            message.reply(response.data.choices[0].text);
-        } catch (error) {
-            console.error(error);
-            message.reply('An error occurred while processing your request.');
-        } finally {
-            await page.close();
-        }
-    } else {
-        const command = client.commands.get(commandName);
-        if (!command) return;
-
-        try {
-            console.log(`Executing ${commandName} command`);
-            await command.execute(message, args);
-        } catch (error) {
-            console.error(`Error executing ${commandName} command:`, error);
-            message.reply('There was an error trying to execute that command!');
-        }
+    try {
+        console.log(`Executing ${commandName} command`);
+        await command.execute(message, args);
+    } catch (error) {
+        console.error(`Error executing ${commandName} command:`, error);
+        message.reply('There was an error trying to execute that command!');
     }
 });
 
@@ -158,6 +132,7 @@ for (const command of client.commands.values()) {
         console.error('Error refreshing application (/) commands:', error);
     }
 })();
+
 
 // Login to Discord
 client.login(process.env.DISCORD_BOT_TOKEN);
