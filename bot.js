@@ -1,5 +1,5 @@
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
-const { MessageEmbed } = require('@discordjs/builders'); // Import MessageEmbed
+const { MessageEmbed } = require('@discordjs/builders');
 const fs = require('fs');
 const path = require('path');
 const config = require('./config.json');
@@ -7,7 +7,6 @@ const puppeteer = require('puppeteer');
 const openai = require('openai');
 const { PythonShell } = require('python-shell');
 const { handleMessage } = require('./commands/level/levlingsystem');
-
 
 const client = new Client({
     intents: [
