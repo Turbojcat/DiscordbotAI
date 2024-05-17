@@ -5,7 +5,7 @@ const config = require('./config.json');
 const puppeteer = require('puppeteer');
 const openai = require('openai');
 const { PythonShell } = require('python-shell');
-
+const { handleMessage } = require('./commands/level/levlingsystem');
 
 const client = new Client({
     intents: [
@@ -58,6 +58,14 @@ const loadCommands = async dir => {
 
 loadCommands(path.join(__dirname, 'commands'));
 
+client.on('messageCreate', (message) => {
+    // Handle commands
+    // ...
+  
+    // Handle leveling system
+    handleMessage(message);
+})
+
 client.commands.set('python', {
     data: {
         name: 'python',
@@ -92,7 +100,6 @@ client.commands.set('python', {
     },
 });
 
-
 // Event handler
 client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -101,7 +108,6 @@ client.once('ready', () => {
         status: 'online'
     });
 });
-
 
 client.on('messageCreate', async message => {
     if (!message.guild) return;
@@ -169,7 +175,6 @@ for (const command of client.commands.values()) {
         console.error('Error refreshing application (/) commands:', error);
     }
 })();
-
 
 // Login to Discord
 client.login(process.env.DISCORD_BOT_TOKEN);

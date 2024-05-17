@@ -1,4 +1,20 @@
 {
-    "prefix": "!"
-}
+    "prefix": "!",
+    "baseXP": 100,
+    "xpMultiplier": 1.5,
+    "minUniqueWords": 3,
+    "minCharacters": 8,
+    "cooldownDuration": 5000,
+    "allowedRoles": ["123456789012345678", "987654321098765432"],
+    "roleRewards": [
+      {
+        "level": 10,
+        "roleId": "123456789012345678"
+      },
+      {
+        "level": 20,
+        "roleId": "987654321098765432"
+      }
+    ]
+  }
   
