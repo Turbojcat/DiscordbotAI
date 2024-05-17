@@ -13,9 +13,12 @@ const client = new Discord.Client({
     ],
 });
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 // Set up OpenAI API
 const configuration = new Configuration({
-    apiKey: config.openaiApiKey,
+    apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -133,7 +136,7 @@ client.commands.set('help', {
 });
 
 const { REST, Routes } = require('discord.js');
-const rest = new REST({ version: '10' }).setToken(config.token);
+const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_BOT_TOKEN);
 
 const commandData = [];
 for (const command of client.commands.values()) {
@@ -146,7 +149,7 @@ for (const command of client.commands.values()) {
         console.log(`Started refreshing ${commandData.length} application (/) commands.`);
 
         const data = await rest.put(
-            Routes.applicationCommands(config.clientId),
+            Routes.applicationCommands(process.env.CLIENT_ID),
             { body: commandData },
         );
 
@@ -157,4 +160,4 @@ for (const command of client.commands.values()) {
 })();
 
 // Login to Discord
-client.login(config.token);
+client.login(process.env.DISCORD_BOT_TOKEN);
