@@ -1,15 +1,15 @@
-const Discord = require('discord.js');
-const { GatewayIntentBits } = Discord;
+const { Client, GatewayIntentBits, Collection, MessageEmbed } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 const config = require('./config.json');
 const puppeteer = require('puppeteer');
-const { Configuration, OpenAIApi } = require('openai');
+const openai = require('openai');
 
-const client = new Discord.Client({
+const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
     ],
 });
 
@@ -17,10 +17,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Set up OpenAI API
-const configuration = new Configuration({
+const configuration = new openai.Configuration({
     apiKey: process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
+const openaiApi = new openai.OpenAIApi(configuration);
 
 // Set up Puppeteer
 let browser;
@@ -29,7 +29,7 @@ let browser;
 })();
 
 // Set the client.commands property to a new Collection object
-client.commands = new Discord.Collection();
+client.commands = new Collection();
 
 // Load commands from commands folder and subfolders
 const loadCommands = async dir => {
@@ -57,7 +57,7 @@ const loadCommands = async dir => {
 loadCommands(path.join(__dirname, 'commands'));
 
 // Event handler
-client.on('ready', () => {
+client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     client.user.setActivity('Hello', { type: 'LISTENING' });
 });
@@ -121,14 +121,14 @@ client.commands.set('help', {
         description: 'Displays a list of available commands',
     },
     execute(message) {
-        const commands = client.commands.array();
-        const helpEmbed = new Discord.MessageEmbed()
+        const commands = client.commands.map(command => command.data);
+        const helpEmbed = new MessageEmbed()
             .setTitle('Help')
             .setDescription('Here is a list of available commands:')
             .setColor('BLUE');
 
         commands.forEach(command => {
-            helpEmbed.addField(command.data.name, command.data.description, true);
+            helpEmbed.addField(command.name, command.description, true);
         });
 
         message.channel.send({ embeds: [helpEmbed] });
