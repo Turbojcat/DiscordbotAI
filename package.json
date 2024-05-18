@@ -9,10 +9,11 @@
   "author": "Ronny",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/builders": "^1.4.0",
+    "@discordjs/builders": "^1.8.1",
     "discord.js": "^14.15.2",
-    "openai": "^3.2.1",
-    "puppeteer": "^19.7.2",
+    "dotenv": "^16.4.5",
+    "openai": "^3.3.0",
+    "puppeteer": "^22.9.0",
     "python-shell": "^3.0.1"
   }
 }

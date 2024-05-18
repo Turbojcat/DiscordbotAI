@@ -140,7 +140,7 @@ client.commands.set('help', {
     },
     execute(message) {
         const commands = client.commands.map(command => command.data);
-        const helpEmbed = new MessageEmbed()
+        const helpEmbed = new MessageEmbed() // <-- Error occurs here
             .setTitle('Help')
             .setDescription('Here is a list of available commands:')
             .setColor('BLUE');
