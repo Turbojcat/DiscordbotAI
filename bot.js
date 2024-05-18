@@ -1,5 +1,5 @@
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
-const { MessageEmbed } = require('@discordjs/builders');
+const { MessageEmbed } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 const config = require('./config.json');
