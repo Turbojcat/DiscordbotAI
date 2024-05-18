@@ -6,6 +6,8 @@ const puppeteer = require('puppeteer');
 const openai = require('openai');
 const { PythonShell } = require('python-shell');
 const { handleMessage } = require('./commands/level/levlingsystem');
+const gamedig = require('gamedig');
+
 
 
 
@@ -105,6 +107,7 @@ client.commands.set('python', {
 // Event handler
 client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+   // console.log(`${bot.user.username} is on ${bot.guilds.cache.size} servers and monitoring ${bot.users.cache.size} users! ${bot.commands.size} commands and ${bot.commands.map(e => e.help.alias.length).reduce((x,y) => x + y)} aliases`)
     client.user.setPresence({
         activities: [{ name: 'Hello', type: 'LISTENING' }],
         status: 'online'
