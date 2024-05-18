@@ -1,5 +1,4 @@
-const { Client, GatewayIntentBits, Collection } = require('discord.js');
-const { MessageEmbed } = require('discord.js');
+const { Client, GatewayIntentBits, Collection, EmbedBuilder } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
 const config = require('./config.json');
@@ -7,6 +6,8 @@ const puppeteer = require('puppeteer');
 const openai = require('openai');
 const { PythonShell } = require('python-shell');
 const { handleMessage } = require('./commands/level/levlingsystem');
+
+
 
 const client = new Client({
     intents: [
@@ -132,26 +133,26 @@ client.on('messageCreate', async message => {
     }
 });
 
-// Advanced help system
 client.commands.set('help', {
     data: {
         name: 'help',
-        description: 'Displays a list of available commands',
+        description: 'List all available commands',
     },
-    execute(message) {
-        const commands = client.commands.map(command => command.data);
-        const helpEmbed = new MessageEmbed() // <-- Error occurs here
+    execute(message, args) {
+        const embed = new EmbedBuilder()
+            .setColor('#0099ff')
             .setTitle('Help')
-            .setDescription('Here is a list of available commands:')
-            .setColor('BLUE');
+            .setDescription('List of all available commands');
 
-        commands.forEach(command => {
-            helpEmbed.addField(command.name, command.description, true);
-        });
+        const commands = client.commands.map(command => `\`${command.data.name}\` - ${command.data.description}`).join('\n');
+        embed.addFields({ name: 'Commands', value: commands, inline: true });
 
-        message.channel.send({ embeds: [helpEmbed] });
+        message.channel.send({ embeds: [embed] });
     },
 });
+
+
+
 
 
 const { REST, Routes } = require('discord.js');

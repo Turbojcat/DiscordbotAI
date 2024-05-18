@@ -15,5 +15,6 @@
     "openai": "^3.3.0",
     "puppeteer": "^22.9.0",
     "python-shell": "^3.0.1"
-  }
+  },
+  "keywords": []
 }
