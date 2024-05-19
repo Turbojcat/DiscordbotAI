@@ -24,6 +24,24 @@ const quests = {
         },
       ],
     },
+    'slay_goblins': {
+      name: 'Slay Goblins',
+      description: 'Defeat 10 goblins in the nearby forest',
+      requirements: {
+        level: 1,
+      },
+      objectives: [
+        {
+          type: 'kill_monsters',
+          target: 'goblin',
+          amount: 10,
+        },
+      ],
+      rewards: [
+        { type: 'experience', amount: 100 },
+        { type: 'item', item: 'iron_sword', amount: 1 },
+      ],
+    },
   };
   
   module.exports = quests;

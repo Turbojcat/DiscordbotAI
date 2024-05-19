@@ -93,4 +93,58 @@ function initiateTradeRequest(player1, player2) {
     removeItemFromTrade,
     acceptTrade,
   };
-  
+  // games/legenden-om-eldoria/utils/tradeUtils.js
+const merchants = require('../data/merchants');
+
+function buyFromMerchant(player, merchantId, itemId, amount) {
+  const merchant = merchants[merchantId];
+
+  if (!merchant) {
+    return false;
+  }
+
+  const item = merchant.inventory.find(i => i.item === itemId);
+
+  if (!item || item.amount < amount) {
+    return false;
+  }
+
+  const totalCost = item.price * amount;
+
+  if (player.gold < totalCost) {
+    return false;
+  }
+
+  player.gold -= totalCost;
+  item.amount -= amount;
+  addItemToInventory(player, itemId, amount);
+
+  return true;
+}
+
+function sellToMerchant(player, merchantId, itemId, amount) {
+  const merchant = merchants[merchantId];
+
+  if (!merchant) {
+    return false;
+  }
+
+  const item = player.inventory[itemId];
+
+  if (!item || item.amount < amount) {
+    return false;
+  }
+
+  const sellPrice = Math.floor(item.price * 0.5); // Sell price is 50% of buy price
+  const totalSale = sellPrice * amount;
+
+  player.gold += totalSale;
+  removeItemFromInventory(player, itemId, amount);
+
+  return true;
+}
+
+module.exports = {
+  buyFromMerchant,
+  sellToMerchant,
+};

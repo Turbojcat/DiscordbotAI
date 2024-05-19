@@ -9,6 +9,15 @@ const farms = {
       size: 'medium',
       crops: ['wheat'],
     },
+    'oakwood_farm': {
+      name: 'Oakwood Farm',
+      description: 'A farm on the outskirts of the Village of Oakwood',
+      type: 'crop',
+      size: 'small',
+      crops: ['wheat', 'vegetables'],
+      price: 1000,
+      income: 50, // Daily income
+    },
   };
   
   module.exports = farms;

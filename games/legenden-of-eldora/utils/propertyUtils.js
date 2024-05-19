@@ -40,4 +40,41 @@ function buyProperty(player, propertyId) {
     buyProperty,
     sellProperty,
   };
+// games/legenden-om-eldoria/utils/propertyUtils.js
+const properties = require('../data/properties');
+
+function buyProperty(player, propertyId) {
+  const property = properties[propertyId];
+
+  if (!property) {
+    return false;
+  }
+
+  if (player.gold < property.price) {
+    return false;
+  }
+
+  player.gold -= property.price;
+  player.ownedProperties.push(propertyId);
+
+  return true;
+}
+
+function collectPropertyIncome(player) {
+  let totalIncome = 0;
+
+  for (const propertyId of player.ownedProperties) {
+    const property = properties[propertyId];
+    totalIncome += property.income;
+  }
+
+  player.gold += totalIncome;
+
+  return totalIncome;
+}
+
+module.exports = {
+  buyProperty,
+  collectPropertyIncome,
+};
   

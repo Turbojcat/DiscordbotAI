@@ -53,4 +53,74 @@ function joinRaid(player, raidId) {
     joinRaid,
     completeRaid,
   };
-  
+  // games/legenden-om-eldoria/utils/raidUtils.js
+const raids = require('../data/raids');
+
+function joinRaid(player, raidId) {
+  const raid = raids[raidId];
+
+  if (!raid) {
+    return false;
+  }
+
+  if (player.level < raid.requirements.level) {
+    return false;
+  }
+
+  if (raid.players.length >= raid.maxPlayers) {
+    return false;
+  }
+
+  raid.players.push(player.id);
+
+  return true;
+}
+
+function startRaid(raidId) {
+  const raid = raids[raidId];
+
+  if (!raid) {
+    return false;
+  }
+
+  if (raid.players.length < raid.minPlayers) {
+    return false;
+  }
+
+  // Implement raid logic
+  // ...
+
+  return true;
+}
+
+function completeRaid(raidId) {
+  const raid = raids[raidId];
+
+  if (!raid) {
+    return false;
+  }
+
+  // Implement raid completion logic
+  // ...
+
+  const rewards = raid.rewards;
+  raid.players.forEach(playerId => {
+    const player = players[playerId];
+    rewards.forEach(reward => {
+      if (reward.type === 'experience') {
+        gainExperience(player, reward.amount);
+      } else if (reward.type === 'item') {
+        addItemToInventory(player, reward.item, reward.amount);
+      }
+      // Handle other reward types
+    });
+  });
+
+  return true;
+}
+
+module.exports = {
+  joinRaid,
+  startRaid,
+  completeRaid,
+};

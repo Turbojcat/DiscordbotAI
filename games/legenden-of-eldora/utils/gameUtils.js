@@ -30,3 +30,25 @@ module.exports = {
   calculateExperienceNeeded,
   calculateDamage,
 };
+// games/legenden-om-eldoria/utils/gameUtils.js
+const skills = require('../data/skills');
+
+function calculateDamage(attacker, defender, weapon) {
+  let baseDamage = weapon.stats.damage || 0;
+  const attackerSkill = attacker.skills[weapon.skill];
+
+  if (attackerSkill) {
+    const skillLevel = attackerSkill.level;
+    const skillLevelData = skills[weapon.skill].levels.find(level => level.level === skillLevel);
+    baseDamage += skillLevelData.damageBonus;
+  }
+
+  // Add additional damage calculations based on other factors
+
+  return baseDamage;
+}
+
+module.exports = {
+  calculateDamage,
+  // Other functions exported from gameUtils.js
+};

@@ -41,3 +41,40 @@ function buyFarm(player, farmId) {
     sellFarm,
   };
   
+  // games/legenden-om-eldoria/utils/farmingUtils.js
+const farms = require('../data/farms');
+
+function buyFarm(player, farmId) {
+  const farm = farms[farmId];
+
+  if (!farm) {
+    return false;
+  }
+
+  if (player.gold < farm.price) {
+    return false;
+  }
+
+  player.gold -= farm.price;
+  player.ownedFarms.push(farmId);
+
+  return true;
+}
+
+function collectFarmIncome(player) {
+  let totalIncome = 0;
+
+  for (const farmId of player.ownedFarms) {
+    const farm = farms[farmId];
+    totalIncome += farm.income;
+  }
+
+  player.gold += totalIncome;
+
+  return totalIncome;
+}
+
+module.exports = {
+  buyFarm,
+  collectFarmIncome,
+};
