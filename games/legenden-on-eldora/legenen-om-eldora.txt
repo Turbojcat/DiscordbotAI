@@ -1,0 +1,63 @@
+Selvfølgelig, jeg kan skrive ned hele implementasjonen av "Legenden om Eldoria" i detaljer uten å bruke kode. Her er en detaljert beskrivelse av hvordan spillet fungerer:
+
+Introduksjon:
+"Legenden om Eldoria" er et avansert, tekstbasert RPG-spill som spillere kan utforske og spille gjennom Discord-boten. Spillets hovedmål er å bli den mektigste eventyren i Eldoria ved å trene ferdigheter, bekjempe monstre, samle ressurser, crafte utstyr og utforske ukjente områder.
+
+Spilloppsettet:
+Når en spiller starter "Legenden om Eldoria" for første gang, må de velge en spillerfigur/rase. Valgmulighetene inkluderer Night Elf, Blod Elf, Gnome, Troll og Menneske. Hver rase har unike startegenskaper og evner som påvirker spillerens utvikling.
+
+Etter å ha valgt rase, starter spilleren på nivå 1 med grunnleggende stats som helse, angrep, forsvar, utholdenhet og magi. Spilleren har også et tomt inventar og ingen utrustede gjenstander.
+
+Ferdigheter:
+Spilleren kan trene og utvikle forskjellige ferdigheter som farming, mining, woodcutting, cooking, fishing, crafting og combat. Hver ferdighet har sitt eget nivå, og høyere nivåer gir bedre belønninger og sjanse for å finne sjeldne ressurser/gjenstander.
+
+Farming: Dyrke avlinger, høste mat, urter og andre ressurser.
+Mining: Utvinne mineraler, edelstener og verdifulle ressurser.
+Woodcutting: Hogge trær for tømmer, bark og andre treressurser.
+Cooking: Lage mat og drikke for å restorere helse, gi buffs og lage spesielle krefter.
+Fishing: Fiske i forskjellige vannkilder for å få fisk, sjeldne gjenstander og penger.
+Crafting: Lage utstyr, våpen, rustninger og andre gjenstander ved å kombinere ressurser.
+Combat: Trene kampsystemet for å bli sterkere og bekjempe monstre.
+Kampsystem:
+Spilleren kan utforske forskjellige områder og dungeons for å møte på monstre. Når et monster spawner, vises en embed med navn, nivå, helse, angrepspoeng, forsvar, etc. Spilleren kan velge mellom å "Kjempe", "Flykte" eller "Bruke magi/spesiell evne" ved hjelp av reaksjonsknapper.
+
+Hvis spilleren velger å kjempe, utføres en kampsekvens basert på spillerens og monstrets stats. Spilleren kan bruke spesielle evner/magi som krever ressurser som mana, utholdenhet, etc. Etter å ha beseiret et monster, har spilleren en sjanse til å få loot (vanlig, sjelden, episk, legendarisk).
+
+Loot-system:
+
+Vanlig loot: Ikke-brukbare gjenstander som kan selges for gull/penger.
+Sjelden loot: Ressurser, materialer, oppskrifter for crafting.
+Episk loot: Rustninger, våpen, ekstra gull/penger, enchants, spesielle evner.
+Legendarisk loot: De beste rustningene og våpnene med unike evner og høye stats.
+Monstertreningssystem:
+Spilleren kan fange og trene sine egne personlige monstre. Disse monstrene kan brukes i kamp eller til å utføre spesielle oppgaver. Noen monstre er svært sjeldne og vanskelige å fange. Monstrene kan trenes og utvikles for å bli sterkere, og spilleren kan utruste dem med spesielt utstyr og evner.
+
+Utvikling og progresjon:
+Spilleren kan oppgradere utstyr, våpen og rustninger ved hjelp av ressurser og crafting. Oppgraderinger kan gi økte stats, spesielle evner eller kosmetiske endringer. Spilleren kan også lære nye evner og magi ved å nå bestemte nivåer, finne sjeldne bøker/scrolls eller trene under spesielle mestre.
+
+Spilleren kan bygge og oppgradere en base/landsby med forskjellige fasiliteter som smedjer, butikker, treningsfasiliteter, etc. Spilleren kan også ansette følgesvenner/leiesoldater for å hjelpe i kamp eller med andre oppgaver. Følgesvenner kan trenes og utvikles på samme måte som spillerens egne monstre.
+
+Handelssystem:
+Spillere kan handle med hverandre og bytte gjenstander, monstre, gull/penger og ressurser. Handelssystemet kan ha en avgift eller skatt for å balansere økonomien.
+
+Smisystem og enchantsystem:
+Spillere kan smie sine egne våpen og rustninger ved å bruke spesielle materialer og ressurser. Høyere nivå av smiing gir bedre kvalitet på utstyret. Spillere kan også enchante utstyr med spesielle evner og effekter, noe som krever sjeldne materialer og ressurser. Høyere nivå av enchanting gir sterkere effekter.
+
+Ressurssystem:
+Materialer og ressurser kreves for å crafte, oppgradere og enchante gjenstander. Ressurser kan samles gjennom ferdigheter som mining, woodcutting, etc. Noen ressurser er svært sjeldne og vanskelige å finne.
+
+Adminkommandoer:
+Adminer har tilgang til spesielle kommandoer for å administrere spillverdenen, som å gi eller ta gjenstander fra spillere, legge til eller fjerne ressurser, spawne monstre, og starte eller avslutte spesielle hendelser.
+
+Spesielle hendelser og raids:
+Spilleren kan delta i spesielle hendelser eller raids for å få tilgang til sjeldne belønninger. Disse hendelsene kan inkludere utfordringer, spesielle monstre eller bosser, og unike gjenstander som belønning.
+
+Tilleggsfunksjoner:
+
+Spilleren kan utforske tilfeldige dungeons eller portaler for å finne skatter og utfordringer.
+Spilleren kan delta i PvP-kamper eller turneringer mot andre spillere.
+Spilleren kan danne eller bli med i en gilde for å samarbeide med andre spillere. Gildemedlemmer kan hjelpe hverandre med ressurser, kamp og spesielle oppdrag.
+Dokumentasjon:
+Det finnes en detaljert dokumentasjon om hvordan "Legenden om Eldoria" fungerer. Dokumentasjonen inkluderer en oversikt over spillmekanikker, beskrivelser av ferdigheter, monstre, gjenstander, etc., forklaringer av kommandoer og systemer, samt tips og triks for å mestre spillet. Dokumentasjonen kan deles i flere embedder grunnet Discord-begrensningen på 2000 tegn.
+
+Dette gir deg en detaljert beskrivelse av hvordan "Legenden om Eldoria" fungerer, uten å gå inn i kodedetaljer. Gi meg beskjed hvis du trenger mer informasjon om noen spesifikke deler av spillet.

@@ -1,25 +1,26 @@
-const Gamedig = require('gamedig');
+const gamedig = require('gamedig');
+const Gamedig = gamedig.Gamedig;
 const { EmbedBuilder } = require('@discordjs/builders');
-
+const util = require('util');
 
 module.exports = {
     data: {
         name: 'players',
         description: 'Get the number of players on the Space Engineers server',
     },
-    async execute(message) {
+    execute: async (message) => {
         try {
-            console.log('Gamedig instance:', Gamedig);
-
             const serverOptions = {
                 type: 'spaceengineers',
-                host: '65.109.38.182', // Erstatt med din server-IP
-                port: '27016' // Erstatt med din server-port
+                host: '65.109.38.182', // Replace with your server IP
+                port: '27016' // Replace with your server port
             };
 
             console.log('Server options:', serverOptions);
 
-            const state = await gamedig.query(serverOptions);
+            const gamedigInstance = new Gamedig();
+            const queryPromise = util.promisify(gamedigInstance.query).bind(gamedigInstance);
+            const state = await queryPromise(serverOptions);
 
             console.log('Server state:', state);
 

@@ -10,9 +10,17 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/builders": "^1.8.1",
+    "@tensorflow-models/mobilenet": "^2.1.1",
+    "compromise": "^14.13.0",
     "discord.js": "^14.15.2",
     "dotenv": "^16.4.5",
+    "fetch": "^1.1.0",
     "gamedig": "^5.0.0",
+    "google-auth-library": "^9.10.0",
+    "google-spreadsheet": "^4.1.2",
+    "googleapis": "^137.1.0",
+    "natural": "^7.0.5",
+    "node-fetch": "^3.3.2",
     "openai": "^3.3.0",
     "puppeteer": "^22.9.0",
     "python-shell": "^3.0.1"

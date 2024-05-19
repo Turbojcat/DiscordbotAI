@@ -1,0 +1,10 @@
+
+hello
+how are you?bot
+hell|undefined
+hei|Beklager, jeg klarte ikke å generere et svar.
+hei|Beklager, jeg klarte ikke å generere et svar.
+hva er 2+2?|Beklager, jeg klarte ikke å generere et svar.
+hva er 2+2?|Beklager, jeg klarte ikke å generere et svar.
+hent last discord.js doc|Beklager, jeg klarte ikke å generere et svar.
+hent last discord.js doc|Beklager, jeg klarte ikke å generere et svar.
