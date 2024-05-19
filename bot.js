@@ -53,7 +53,25 @@ const loadCommands = async (dir) => {
 };
 
 loadCommands(path.join(__dirname, 'commands'));
-selfLearning.loadSelfLearning(client); // Laste inn selvlæringsfunksjonaliteten
+selfLearning.loadSelfLearning(client); // Load self-learning functionality
+
+// Load player data, monsters, items, etc.
+const playerData = require('./games/legenden-of-eldoria/data/players');
+const monsterData = require('./games/legenden-of-eldoria/data/monsters');
+const itemData = require('./games/legenden-of-eldoria/data/items');
+
+// Load utility functions and constants
+const { SKILL_LEVELS, MONSTER_LEVELS, ITEM_RARITIES } = require('./games/legenden-of-eldoria/utils/constants');
+const { calculateExperienceNeeded, generateLoot } = require('./games/legenden-of-eldoria/utils/gameUtils');
+const { createEmbed } = require('./games/legenden-of-eldoria/utils/embeds');
+
+// Load RPG game commands
+const commandFiles = fs.readdirSync('./games/legenden-of-eldoria/commands').filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+    const command = require(`./games/legenden-of-eldoria/commands/${file}`);
+    client.commands.set(command.name, command);
+}
 
 client.on('messageCreate', (message) => {
     // Handle commands
@@ -71,7 +89,7 @@ client.on('messageCreate', (message) => {
 
     try {
         console.log(`Executing ${commandName} command`);
-        command.execute(message, args, client); // Send client-objektet som tredje argument
+        command.execute(message, args, client); // Send client object as third argument
     } catch (error) {
         console.error(`Error executing ${commandName} command:`, error);
         message.reply('There was an error trying to execute that command!');
