@@ -8,6 +8,7 @@ const { PythonShell } = require('python-shell');
 const { handleMessage } = require('./commands/level/levlingsystem');
 const gamedig = require('gamedig');
 const selfLearning = require('./ai/selflearning');
+const Game = require('./games/legenden-om-eldoria/game');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 
@@ -53,7 +54,7 @@ const loadCommands = async (dir) => {
 };
 
 loadCommands(path.join(__dirname, 'commands'));
-selfLearning.loadSelfLearning(client); // Load self-learning functionality
+//selfLearning.loadSelfLearning(client); // Load self-learning functionality
 
 // Load player data, monsters, items, etc.
 const playerData = require('./games/legenden-of-eldoria/data/players');

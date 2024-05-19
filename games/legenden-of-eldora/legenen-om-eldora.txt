@@ -61,3 +61,29 @@ Dokumentasjon:
 Det finnes en detaljert dokumentasjon om hvordan "Legenden om Eldoria" fungerer. Dokumentasjonen inkluderer en oversikt over spillmekanikker, beskrivelser av ferdigheter, monstre, gjenstander, etc., forklaringer av kommandoer og systemer, samt tips og triks for å mestre spillet. Dokumentasjonen kan deles i flere embedder grunnet Discord-begrensningen på 2000 tegn.
 
 Dette gir deg en detaljert beskrivelse av hvordan "Legenden om Eldoria" fungerer, uten å gå inn i kodedetaljer. Gi meg beskjed hvis du trenger mer informasjon om noen spesifikke deler av spillet.
+
+Hva som er gjort:
+
+Spilleropprettelse: Spillere kan opprette sin egen karakter ved å velge rase og navn.
+Kampsystem:
+Spillere kan starte kamp mot tilfeldige monstre ved å bruke !combat-kommandoen.
+Spillere kan angripe, forsvare seg eller flykte under kamp.
+Beregning av skade, oppdatering av helse og håndtering av spillerdød og monsterseier er implementert.
+Spillere får erfaring og loot når de beseiret et monster.
+Datalagring:
+Spilldata, inkludert spillertilstand og spillverdensstatus, lagres regelmessig.
+Spillerdata lastes inn når spillet starter.
+Hva som gjenstår:
+
+Implementere Player-klassen: Koden forutsetter at Player-klassen eksisterer, men denne må implementeres med alle nødvendige egenskaper og metoder.
+Implementere hjelpefunksjoner: Flere hjelpefunksjoner for beregning av erfaring, skade, lootgenerering, etc. må implementeres.
+Implementere inventarsystem: Spillere må kunne lagre og bruke gjenstander fra sitt inventar.
+Implementere ferdighetssystem: Spillere må kunne trene og bruke ferdigheter som farming, mining, woodcutting, osv.
+Implementere oppdragssystem: Spillere må kunne ta på seg og fullføre oppdrag for å få belønninger.
+Implementere hendelsessystem: Tilfeldige hendelser må kunne oppstå og påvirke spillverdenen.
+Implementere raidssystem: Spillere må kunne delta i raids mot sterke monstre eller bosser.
+Implementere arenasystem: Spillere må kunne delta i arenaer for å kjempe mot andre spillere eller spesielle utfordringer.
+Implementere øvrige spillmekanikker: Eventuelle andre spillmekanikker du ønsker å inkludere, som handel mellom spillere, crafting, osv.
+Implementere Discord-kommandoer: Flere Discord-kommandoer må implementeres for å utløse de ulike spillmekanikkene.
+Implementere hjelpefunksjoner: Flere hjelpefunksjoner for å håndtere embedding, lagring, lasting, etc. må implementeres.
+Populere spilldata: Arrayer for gjenstander, monstre, oppdrag, hendelser, raids og arenaer må fylles med relevant data.
